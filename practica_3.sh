@@ -51,9 +51,9 @@ then
 
 				elif [ $(cat /etc/passwd | grep "$logname:" | wc -l) -ne 0 ]
 				then
-if tar cfP "/extra/backup/$logname.tar" "$(cat /etc/passwd | grep "$logname:" | cut -d':' -f6)"
+					if tar cfP "/extra/backup/$logname.tar" "$(cat /etc/passwd | grep "$logname:" | cut -d':' -f6)"
 					then
-						userdel -r "$logname"
+						userdel -r "$logname" 2>/dev/null
 					fi
 				fi
 			done
